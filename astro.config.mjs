@@ -11,8 +11,8 @@ export default defineConfig({
 				'./src/styles/custom.css',
 			],
 			logo: {
-				light: './src/assets/light-logo.png',
-				dark: './src/assets/dark-logo.png',
+				light: './src/assets/uni-crest.svg',
+				dark: './src/assets/uni-crest.svg',
 			  },
 			social: {
 				github: 'https://github.com/withastro/starlight',
