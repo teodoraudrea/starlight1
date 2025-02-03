@@ -13,7 +13,7 @@ export default defineConfig({
 			logo: {
 				light: './src/assets/uni-crest.svg',
 				dark: './src/assets/uni-crest.svg',
-			  },
+			},
 			social: {
 				github: 'https://github.com/withastro/starlight',
 			},
@@ -28,6 +28,26 @@ export default defineConfig({
 				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
+				},
+				{
+					label: 'Core',
+					autogenerate: { directory: 'core' },
+				},
+				{
+					label: 'Components',
+					autogenerate: { directory: 'components' },
+				},
+				{
+					label: 'Patterns',
+					autogenerate: { directory: 'patterns' },
+				},
+				{
+					label: 'Page examples',
+					autogenerate: { directory: 'page-examples' },
+				},
+				{
+					label: 'Setup',
+					autogenerate: { directory: 'setup' },
 				},
 			],
 		}),
