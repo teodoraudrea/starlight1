@@ -7,12 +7,12 @@ hero:
   image:
     light: ../../assets/light-logo.png
     dark: ../../assets/dark-logo.png      # Used in dark theme
-  # actions:
-  #   - text: Current documentation page
-  #     link: https://www.st-andrews.ac.uk/dpl/1.27.3/index.html
-  #     icon: external
-  #     variant: minimal
-  #     iconPlacement: start
+  actions:
+    - text: Current documentation page
+      link: https://www.st-andrews.ac.uk/dpl/1.27.3/index.html
+      icon: external
+      variant: secondary
+      iconPlacement: start
 
 
 ---
@@ -22,29 +22,25 @@ import { Card, LinkCard, CardGrid, Icon } from '@astrojs/starlight/components';
 ## What are you looking for?
 
 <CardGrid>
-	<LinkCard
-    title="Example guide"
-    href="/guides/example"
-    description="Starlight's built-in example of a guide."/>
   <LinkCard
     title="Core"
-    href="/guides/example"
-    description="Starlight's built-in example of a guide."/>
+    href="/core/introduction/"
+    description="The atoms of the University’s design system."/>
   <LinkCard
     title="Components"
-    href="/guides/example"
-    description="Starlight's built-in example of a guide."/>
+    href="/components/introduction"
+    description="The molecules of the University’s design system."/>
   <LinkCard
     title="Patterns"
-    href="/guides/example"
-    description="Starlight's built-in example of a guide."/>
+    href="/patterns/introduction"
+    description="The organisms of the University’s design system."/>
   <LinkCard
-    title="Page examples"
-    href="/guides/example"
-    description="Starlight's built-in example of a guide."/>
+    title="Templates"
+    href="/patterns/introduction"
+    description="Template examples."/>
   <LinkCard
-    title="Page examples"
-    href="/guides/example"
-    description="Starlight's built-in example of a guide."/>
+    title="Pages"
+    href="/patterns/introduction"
+    description="Page Examples."/>
 </CardGrid>
 

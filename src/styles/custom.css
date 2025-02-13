@@ -11,6 +11,9 @@
 	--sl-color-gray-5: #353841;
 	--sl-color-gray-6: #24272f;
 	--sl-color-black: #17181c;
+	.sl-link-button {
+		border-radius: 0.5rem;
+	}
 	@media (min-width: 50rem) {
 		.hero {
 			grid-template-columns: 7fr 4fr;
@@ -18,7 +21,7 @@
 			padding-top: 0;
 			padding-bottom: 0;
 		}
-	}
+	};
 }
 /* Light mode colors. */
 :root[data-theme='light'] {
