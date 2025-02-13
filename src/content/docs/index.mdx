@@ -3,52 +3,48 @@ title: Standards
 description: Get started building your docs site with Starlight.
 template: splash
 hero:
-  tagline: University of St Andrews Design system
+  tagline: University of St Andrews design system
   image:
     light: ../../assets/light-logo.png
     dark: ../../assets/dark-logo.png      # Used in dark theme
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Core
-      link: /core/introduction/
-      icon: right-arrow
-    - text: Components
-      link: /components/introduction/
-      icon: right-arrow
-    - text: Patterns
-      link: /patterns/introduction/
-      icon: right-arrow
-    - text: Page examples
-      link: /page-examples/introduction/
-      icon: right-arrow
-    - text: Setup
-      link: /setup/introduction/
-      icon: right-arrow
-    - text: Current documentation page
-      link: https://www.st-andrews.ac.uk/dpl/1.27.3/index.html
-      icon: external
-      variant: minimal
-      iconPlacement: start
+  # actions:
+  #   - text: Current documentation page
+  #     link: https://www.st-andrews.ac.uk/dpl/1.27.3/index.html
+  #     icon: external
+  #     variant: minimal
+  #     iconPlacement: start
+
 
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, LinkCard, CardGrid, Icon } from '@astrojs/starlight/components';
 
-## Next steps
+## What are you looking for?
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+<CardGrid>
+	<LinkCard
+    title="Example guide"
+    href="/guides/example"
+    description="Starlight's built-in example of a guide."/>
+  <LinkCard
+    title="Core"
+    href="/guides/example"
+    description="Starlight's built-in example of a guide."/>
+  <LinkCard
+    title="Components"
+    href="/guides/example"
+    description="Starlight's built-in example of a guide."/>
+  <LinkCard
+    title="Patterns"
+    href="/guides/example"
+    description="Starlight's built-in example of a guide."/>
+  <LinkCard
+    title="Page examples"
+    href="/guides/example"
+    description="Starlight's built-in example of a guide."/>
+  <LinkCard
+    title="Page examples"
+    href="/guides/example"
+    description="Starlight's built-in example of a guide."/>
 </CardGrid>
+
