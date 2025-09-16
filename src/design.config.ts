@@ -45,18 +45,121 @@ export const COLORS = {
     ],
   };
   
-  export const TYPOGRAPHY = {
-    fontFamily: "'PT Sans',Helvetica,Arial,sans-serif",
-    scale: [
-      { name: "h1", size: "2.0736em", weight: "700" },
-      { name: "h2", size: "1.728em", weight: "700" },
-      { name: "h3", size: "1.44em", weight: "700" },
-      { name: "h4", size: "1.2em", weight: "700" },
-      { name: "body", size: "13pt", weight: "400" },
-      { name: "button", size: "13pt", weight: "400" },
-      { name: "caption", size: "10pt", weight: "400" },
+  // Design configuration for typography + fonts
+// Keep this file importable across Astro/MDX/Vue.
+
+export const TYPOGRAPHY = {
+  fontFamily: "'PT Sans',Helvetica,Arial,sans-serif",
+  scale: [
+    { name: 'h1', size: '2.0736em', weight: '700' },
+    { name: 'h2', size: '1.728em', weight: '700' },
+    { name: 'h3', size: '1.44em', weight: '700' },
+    { name: 'h4', size: '1.2em', weight: '700' },
+    { name: 'body', size: '13pt', weight: '400' },
+    { name: 'button', size: '13pt', weight: '400' },
+    { name: 'caption', size: '10pt', weight: '400' }
+  ]
+} as const
+
+// Programmatic description of your @font-face rules
+export const FONT_FACES = [
+  // PT Sans
+  {
+    family: 'PT Sans', style: 'normal', weight: 400,
+    src: [
+      { local: 'PT Sans' },
+      { local: 'PTSans-Regular' },
+      { url: '//fonts.gstatic.com/s/ptsans/v8/CWlc_g68BGYDSGdpJvpktgLUuEpTyoUstqEm5AMlJo4.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-sans/regular/PTS55F-webfont.woff', format: 'woff' }
     ],
-  };
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+  {
+    family: 'PT Sans', style: 'normal', weight: 700,
+    src: [
+      { local: 'PT Sans Bold' },
+      { local: 'PTSans-Bold' },
+      { url: '//fonts.gstatic.com/s/ptsans/v8/0XxGQsSc1g4rdRdjJKZrNAzyDMXhdD8sAj6OAJTFsBI.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-sans/bold/PTS75F-webfont.woff', format: 'woff' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+  {
+    family: 'PT Sans', style: 'italic', weight: 400,
+    src: [
+      { local: 'PT Sans Italic' },
+      { local: 'PTSans-Italic' },
+      { url: '//fonts.gstatic.com/s/ptsans/v8/PIPMHY90P7jtyjpXuZ2cLJBw1xU1rKptJj_0jans920.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-sans/italic/PTS56F-webfont.woff', format: 'woff2' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+  {
+    family: 'PT Sans', style: 'italic', weight: 700,
+    src: [
+      { local: 'PT Sans Bold Italic' },
+      { local: 'PTSans-BoldItalic' },
+      { url: '//fonts.gstatic.com/s/ptsans/v8/lILlYDvubYemzYzN7GbLkBampu5_7CjHW5spxoeN3Vs.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-sans/bolditalic/PTS76F-webfont.woff', format: 'woff' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+
+  // PT Serif
+  {
+    family: 'PT Serif', style: 'normal', weight: 400,
+    src: [
+      { local: 'PT Serif' },
+      { local: 'PTSerif-Regular' },
+      { url: '//fonts.gstatic.com/s/ptserif/v8/I-OtoJZa3TeyH6D9oli3iXYhjbSpvc47ee6xR_80Hnw.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-serif/regular/PTF55F-webfont.woff', format: 'woff' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+  {
+    family: 'PT Serif', style: 'normal', weight: 700,
+    src: [
+      { local: 'PT Serif Bold' },
+      { local: 'PTSerif-Bold' },
+      { url: '//fonts.gstatic.com/s/ptserif/v8/QABk9IxT-LFTJ_dQzv7xpIgp9Q8gbYrhqGlRav_IXfk.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-serif/bold/PTF75F-webfont.woff', format: 'woff' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+  {
+    family: 'PT Serif', style: 'italic', weight: 400,
+    src: [
+      { local: 'PT Serif Italic' },
+      { local: 'PTSerif-Italic' },
+      { url: '//fonts.gstatic.com/s/ptserif/v8/03aPdn7fFF3H6ngCgAlQzAzyDMXhdD8sAj6OAJTFsBI.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-serif/italic/PTF56F-webfont.woff', format: 'woff' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+  {
+    family: 'PT Serif', style: 'italic', weight: 700,
+    src: [
+      { local: 'PT Serif Bold Italic' },
+      { local: 'PTSerif-BoldItalic' },
+      { url: '//fonts.gstatic.com/s/ptserif/v8/Foydq9xJp--nfYIx2TBz9WaVI6zN22yiurzcBKxPjFE.woff2', format: 'woff2' },
+      { url: '../assets/fonts/pt-serif/bolditalic/PTF76F-webfont.woff', format: 'woff' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  },
+
+  // Google Material Symbols Outlined
+  {
+    family: 'Material Symbols Outlined', style: 'normal', weight: 200,
+    src: [
+      { url: 'https://fonts.gstatic.com/s/materialsymbolsoutlined/v175/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2', format: 'woff2' }
+    ],
+    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
+  }
+] as const
+
+export type FontFaceToken = typeof FONT_FACES[number]
+export type TypographyToken = typeof TYPOGRAPHY
+
   
   export const SHADOWS = {
     types: [

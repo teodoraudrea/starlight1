@@ -8,13 +8,16 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Standards',
+			head: [
+				{ tag: 'link', attrs: { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0' } },
+			  ],
 			customCss: ['./src/styles/custom.css'],
 			logo: {
 				light: './src/assets/uni-crest.svg',
 				dark: './src/assets/uni-crest.svg',
 			},
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/teodoraudrea/starlight1',
 			},
 			sidebar: [
 				{ label: 'Guides', items: [{ label: 'Example Guide', slug: 'guides/example' }] },

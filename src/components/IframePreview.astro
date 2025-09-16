@@ -1,0 +1,98 @@
+---
+interface IframePreviewProps {
+  code: string;
+  cssHrefs?: string[];
+  height?: number;
+  title?: string;
+  sandbox?: string;
+}
+// <script type="module">
+//   import '/src/scripts/iframePreviewClient.ts';
+// </script>
+
+const {
+  code,
+  cssHrefs = ['/dpl.css'],
+  height = 240,
+  title = 'Component preview',
+  sandbox = 'allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts',
+} = Astro.props as IframePreviewProps;
+
+// If your deploy env ever lacked Node's Buffer, you could swap to encodeURIComponent:
+// const dataUrl = `data:text/html;charset=utf-8,${encodeURIComponent(srcdoc)}`;
+const srcdoc = `<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  ${cssHrefs.map(h => `<link rel="stylesheet" href="${h}">`).join('\n  ')}
+  <style>
+    :root { --preview-padding: 16px; }
+    html, body { height: auto; }
+    body { margin: 0; padding: var(--preview-padding); box-sizing: border-box; }
+    body::before{
+      content:""; position:fixed; inset:0;
+      background: linear-gradient(45deg,#0000 49%,rgba(0,0,0,.04) 0 51%,#0000 0) 0 0/16px 16px;
+      pointer-events:none; z-index:-1;
+    }
+  </style>
+</head>
+<body>
+  ${code}
+  <script>
+    (function () {
+      function postHeight() {
+        var h = document.documentElement.scrollHeight;
+        parent.postMessage({ __previewHeight: h }, '*');
+      }
+      new ResizeObserver(postHeight).observe(document.documentElement);
+      window.addEventListener('load', postHeight);
+      setTimeout(postHeight, 0);
+    })();
+  </script>
+</body>
+</html>`;
+
+const dataUrl = `data:text/html;base64,${Buffer.from(srcdoc, 'utf8').toString('base64')}`;
+const clientSrc = '../scripts/iframePreviewClient'; // external TS
+---
+
+<div class="ipw">
+  <div class="ipw__chrome" role="toolbar" aria-label="Preview toolbar">
+    <span class="ipw__label">Preview</span>
+    <div class="ipw__spacer"></div>
+    <button class="ipw__btn" type="button" data-action="copy" aria-label="Copy HTML">Copy</button>
+    <button class="ipw__btn" type="button" data-action="open" aria-label="Open in new tab">Open</button>
+    <button class="ipw__btn" type="button" data-action="fullscreen" aria-label="Fullscreen">Fullscreen</button>
+  </div>
+
+  <div class="ipw__framewrap" tabindex="-1" data-srcdoc={dataUrl}>
+    <iframe
+      class="ipw__iframe"
+      src={dataUrl}
+      title={title}
+      loading="lazy"
+      sandbox={sandbox}
+      allow="clipboard-write"
+    />
+  </div>
+</div>
+
+<style>
+.ipw { border:1px solid var(--sl-color-gray-5); border-radius:12px; overflow:hidden; background:var(--sl-color-bg); }
+.ipw__chrome { display:flex; align-items:center; gap:.5rem; padding:.5rem .75rem; background:var(--sl-color-gray-1); }
+.ipw__label { font: 600 0.9rem/1 system-ui, ui-sans-serif, sans-serif; }
+.ipw__spacer { flex:1; }
+.ipw__btn { font: 500 0.85rem/1 system-ui, ui-sans-serif, sans-serif; border:1px solid var(--sl-color-gray-5); padding:.35rem .6rem; border-radius:.5rem; background:white; cursor:pointer; }
+.ipw__btn:hover { background: var(--sl-color-gray-1); }
+.ipw__framewrap { position:relative; }
+.ipw__iframe { display:block; width:100%; height: {height}px; border:0; background:white; }
+
+.ipw__framewrap:fullscreen,
+.ipw__framewrap:-webkit-full-screen { width:100vw; height:100vh; margin:0; }
+.ipw__framewrap:fullscreen .ipw__iframe,
+.ipw__framewrap:-webkit-full-screen .ipw__iframe { width:100%; height:100%; }
+</style>
+
+<!-- load external TS as a module; Astro/Vite will compile it -->
+<script type="module" src={clientSrc}></script>
