@@ -148,6 +148,16 @@ export const FONT_FACES = [
   }
 ] as const
 
+export const FONT_FACE_CSS = FONT_FACES
+  .map((f) => {
+    const src = f.src.map((s: any) =>
+      'local' in s ? `local('${s.local}')` : `url(${s.url}) format('${s.format}')`
+    ).join(',')
+    return `@font-face{font-family:'${f.family}';font-style:${f.style};font-weight:${f.weight};src:${src};unicode-range:${f.unicodeRange};}`
+  })
+  .join('\n')
+
+
 export type FontFaceToken = typeof FONT_FACES[number]
 export type TypographyToken = typeof TYPOGRAPHY
 
