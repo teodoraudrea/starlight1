@@ -145,15 +145,6 @@ export const FONT_FACES = [
       { url: '../assets/fonts/pt-serif/bolditalic/PTF76F-webfont.woff', format: 'woff' }
     ],
     unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
-  },
-
-  // Google Material Symbols Outlined
-  {
-    family: 'Material Symbols Outlined', style: 'normal', weight: 200,
-    src: [
-      { url: 'https://fonts.gstatic.com/s/materialsymbolsoutlined/v175/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2', format: 'woff2' }
-    ],
-    unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000'
   }
 ] as const
 

@@ -1,5 +1,5 @@
 <template>
-    <section class="typography">
+    <section class="fonts-doc">
   
       <!-- Typography scale repeated for each font face -->
       <div class="block">
