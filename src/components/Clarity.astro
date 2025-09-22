@@ -1,0 +1,12 @@
+---
+const id = import.meta.env.PUBLIC_CLARITY_ID;
+const enabled = import.meta.env.PROD && !!id;
+---
+
+{enabled && (
+  // This runs in the browser after hydration; no island needed.
+  <script type="module" is:inline>
+    import Clarity from '@microsoft/clarity';
+    Clarity.init(import.meta.env.PUBLIC_CLARITY_ID);
+  </script>
+)}
